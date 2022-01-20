@@ -1,6 +1,5 @@
 require("../config/db");
 const app = require("./app")
-const socketio = require('socket.io');
 
 const server = require('http').createServer(app);
 server.listen(process.env.PORT || 80, () => {
@@ -14,7 +13,11 @@ server.listen(process.env.PORT || 80, () => {
 //         // origin: "http://172.16.2.109:3001"
 //     }
 // })
-const io = socketio(server);
+const io = require('socket.io')(server, {
+    cors: {
+      origin: '*',
+    }
+  });
 
 let users = [];
 
