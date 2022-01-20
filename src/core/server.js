@@ -9,7 +9,8 @@ server.listen(process.env.PORT || 80, () => {
 
 const io = require('socket.io')(8900, {
     cors: {
-        origin: "http://172.16.2.109:3001"
+        origin: "https://chatapp-client-nmk.herokuapp.com"
+        // origin: "http://172.16.2.109:3001"
     }
 })
 
