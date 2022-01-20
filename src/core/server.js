@@ -24,6 +24,7 @@ const removeUser = (socketId) => {
     users = users.filter(user => user.socketId !== socketId)
 }
 
+
 const getUser = (userId) => {
     return users.find(user => user.userId === userId)
 }
