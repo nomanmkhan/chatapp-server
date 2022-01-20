@@ -12,5 +12,8 @@ app.use(function (req, res, next) {
     next();
 });
 app.use(cors());
+app.get('/',(req,res)=>{
+    res.send("hello there")
+})
 app.use("/api", route);
 module.exports = app;
