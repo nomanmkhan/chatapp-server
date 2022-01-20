@@ -14,7 +14,7 @@ module.exports.create = async (req, res) => {
         let conversation = await Conversation.findOne({ id: conversationId });
         const message = await new Message(data);
         if (!message) return res.status(400).json({ msg: "values not provided." })
-        conversation.lastMessage({ msg: text, time: new Date() });
+        conversation.lastMessage = { msg: text, time: new Date() };
         await conversation.save()
         await message.save();
         res.status(200).json({ message })
