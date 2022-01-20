@@ -14,6 +14,10 @@ const schema = new mongoose.Schema({
     members: {
         type: Array,
         required: true
+    },
+    lastMessage: {
+        msg: { type: String },
+        time: { type: Date }
     }
 
 }, schemaOption);

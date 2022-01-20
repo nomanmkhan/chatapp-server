@@ -1,5 +1,6 @@
 
 const Message = require("../model/message.model");
+const Conversation = require("../model/conversation.model");
 
 module.exports.create = async (req, res) => {
     try {
@@ -10,9 +11,11 @@ module.exports.create = async (req, res) => {
             sender: id,
             text
         }
-
+        let conversation = await Conversation.findOne({ id: conversationId });
         const message = await new Message(data);
         if (!message) return res.status(400).json({ msg: "values not provided." })
+        conversation.lastMessage({ msg: text, time: new Date() });
+        await conversation.save()
         await message.save();
         res.status(200).json({ message })
 
